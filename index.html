@@ -1278,95 +1278,127 @@
     </div>
 
     <script>
-        // ============================================
-        // THEME TOGGLE
-        // ============================================
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
+    const CONFIG = {
+        web3formsKey: '5f3fc6e9-73b9-4ec2-9766-af112428453b', //ILISI ANG  KANANG KEY SA IMONG WEB3FORMS ACCOUNT, ILISI NI b83fc6ff-4463-41d4-a87a-2475433c9f43
+        telegramBotToken: '8883342788:AAHkzbEV5lOQmhFveSAEpTfAqpjdU6eqLP4', //kani pod
+        telegramChatId: '8017872557' //ug kani pod
+    };
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            html.setAttribute('data-theme', savedTheme);
-        }
+    // ============================================
+    // THEME TOGGLE
+    // ============================================
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) html.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', function() {
+        const newTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
 
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+    // ============================================
+    // SCROLL ANIMATIONS
+    // ============================================
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
 
-        // Form submission handler - Formspree handles the actual submission
-        // The form submits normally to Formspree, no JavaScript interception needed
-        // Formspree will send you an email with the form data
+    // ============================================
+    // PROFILE MODAL
+    // ============================================
+    const profileModal = document.getElementById('profileModal');
+    const profileTrigger = document.getElementById('profileTrigger');
+    const modalClose = document.getElementById('modalClose');
 
-        // ============================================
-        // PROFILE MODAL
-        // ============================================
-        const profileModal = document.getElementById('profileModal');
-        const profileTrigger = document.getElementById('profileTrigger');
-        const modalClose = document.getElementById('modalClose');
-
-        function openProfileModal() {
-            profileModal.classList.add('active');
-            document.body.classList.add('modal-open');
-        }
-
-        function closeProfileModal() {
+    profileTrigger.addEventListener('click', () => {
+        profileModal.classList.add('active');
+        document.body.classList.add('modal-open');
+    });
+    modalClose.addEventListener('click', () => {
+        profileModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    });
+    profileModal.addEventListener('click', (e) => {
+        if (e.target === profileModal) {
             profileModal.classList.remove('active');
             document.body.classList.remove('modal-open');
         }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            profileModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+    });
 
-        // Click on profile image to open
-        profileTrigger.addEventListener('click', openProfileModal);
+    const contactForm = document.querySelector('#contact form');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-        // Click close button
-        modalClose.addEventListener('click', closeProfileModal);
 
-        // Click outside modal to close
-        profileModal.addEventListener('click', function(e) {
-            if (e.target === profileModal) {
-                closeProfileModal();
+    const formStatus = document.createElement('div');
+    formStatus.style.cssText = 'margin-top:1rem;padding:1rem;border-radius:8px;font-size:0.9rem;display:none;';
+    submitBtn.after(formStatus);
+
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formStatus.style.display = 'none';
+
+        try {
+
+            const web3Res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: CONFIG.web3formsKey,
+                    name, email, subject, message
+                })
+            });
+            const web3Data = await web3Res.json();
+            const telegramText = 🔔 *New Portfolio Message*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📋 *Subject:* ${subject}\n\n💬 *Message:*\n${message};
+            const tgRes = await fetch(https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CONFIG.telegramChatId, text: telegramText, parse_mode: 'Markdown' })
+            });
+            const tgData = await tgRes.json();
+
+            if (web3Data.success || tgData.ok) {
+                formStatus.style.cssText += 'background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#22c55e;display:block;';
+                formStatus.textContent = '✅ Message sent! I\'ll get back to you soon.';
+                contactForm.reset();
+            } else {
+                throw new Error('Both failed');
             }
-        });
-
-        // Press Escape to close
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && profileModal.classList.contains('active')) {
-                closeProfileModal();
-            }
-        });
-    </script>
+        } catch (err) {
+            formStatus.style.cssText += 'background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#ef4444;display:block;';
+            formStatus.textContent = '❌ Something went wrong. Email me directly at abejuelakenneth28@gmail.com';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    });
+</script>
+   
 </body>
 </html>

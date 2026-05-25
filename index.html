@@ -1009,6 +1009,7 @@
         }
     </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
     <div class="bg-animation"></div>
@@ -1418,8 +1419,8 @@
                 })
             });
             const web3Data = await web3Res.json();
-            const telegramText =🔔 *New Portfolio Message*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📋 *Subject:* ${subject}\n\n💬 *Message:*\n${message}`;
-            const tgRes = await fetch(https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage, {
+            const telegramText = `🔔 *New Portfolio Message*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📋 *Subject:* ${subject}\n\n💬 *Message:*\n${message}`;
+            const tgRes = await fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: CONFIG.telegramChatId, text: telegramText, parse_mode: 'Markdown' })

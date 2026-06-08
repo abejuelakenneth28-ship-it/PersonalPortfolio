@@ -254,14 +254,15 @@
         .hero-content { max-width: 720px; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.5rem 1.25rem;
+            padding: 0.65rem 1.75rem;
             background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.2);
-            border-radius: 50px; color: var(--primary); font-size: 0.85rem; font-weight: 500;
+            border-radius: 50px; color: var(--primary); font-size: 0.9rem; font-weight: 500;
             margin-bottom: 2rem; animation: fadeInUp 0.8s ease; letter-spacing: 0.02em;
         }
         .hero-badge .dot {
-            width: 6px; height: 6px; background: var(--primary); border-radius: 50%;
+            width: 8px; height: 8px; background: var(--primary); border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -644,7 +645,7 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="dot"></span>
-                Available for freelance work
+                <span style="margin-left: 0.75rem;">Available for freelance work</span>
             </div>
             <h1>Hi, I'm <span>Kenneth Abejuela</span></h1>
             <p>Frontend Developer & UI/UX Designer crafting beautiful, interactive web experiences with modern technologies. Passionate about design, leadership, and creating products that make a difference.</p>

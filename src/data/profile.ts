@@ -71,6 +71,59 @@ export const skills: { icon: SkillIcon; title: string; description: string; tags
   },
 ];
 
+// Skill-level bars (Skills section). Edit the numbers (0–100) to taste.
+// Class strings must stay literal so Tailwind can see them.
+export const skillLevels: { label: string; value: number; color: { indicator: string; track: string } }[] = [
+  {
+    label: "React / Next.js",
+    value: 90,
+    color: {
+      indicator: "**:data-[slot='progress-indicator']:bg-red-500!",
+      track: "**:data-[slot='progress-track']:bg-red-500/20!",
+    },
+  },
+  {
+    label: "TypeScript",
+    value: 82,
+    color: {
+      indicator: "**:data-[slot='progress-indicator']:bg-orange-400!",
+      track: "**:data-[slot='progress-track']:bg-orange-400/20!",
+    },
+  },
+  {
+    label: "Tailwind CSS",
+    value: 88,
+    color: {
+      indicator: "**:data-[slot='progress-indicator']:bg-sky-400!",
+      track: "**:data-[slot='progress-track']:bg-sky-400/20!",
+    },
+  },
+  {
+    label: "UI/UX & Book Design",
+    value: 85,
+    color: {
+      indicator: "**:data-[slot='progress-indicator']:bg-amber-300!",
+      track: "**:data-[slot='progress-track']:bg-amber-300/20!",
+    },
+  },
+  {
+    label: "Python Desktop Apps",
+    value: 75,
+    color: {
+      indicator: "**:data-[slot='progress-indicator']:bg-teal-400!",
+      track: "**:data-[slot='progress-track']:bg-teal-400/20!",
+    },
+  },
+  {
+    label: "Git & Deployment",
+    value: 72,
+    color: {
+      indicator: "**:data-[slot='progress-indicator']:bg-violet-400!",
+      track: "**:data-[slot='progress-track']:bg-violet-400/20!",
+    },
+  },
+];
+
 export type ProjectIcon =
   | "tent"
   | "cart"

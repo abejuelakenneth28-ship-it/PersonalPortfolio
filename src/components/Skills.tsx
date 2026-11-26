@@ -1,5 +1,6 @@
 import { Code2, Palette, Rocket, Star, type LucideIcon } from "lucide-react";
 import { skills, type SkillIcon } from "@/data/profile";
+import SkillsProgress from "./ui/progress-03";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
 
@@ -40,6 +41,9 @@ export function Skills() {
             );
           })}
         </div>
+        <Reveal className="mt-5">
+          <SkillsProgress />
+        </Reveal>
       </div>
     </section>
   );

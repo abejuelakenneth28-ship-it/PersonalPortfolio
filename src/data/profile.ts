@@ -34,7 +34,7 @@ export const about = {
   stats: [
     { value: 2, label: "Years Experience" },
     { value: 7, label: "Projects Completed" },
-    { value: 0, label: "Happy Clients" },
+    { value: 4, label: "Happy Clients" },
   ],
 };
 

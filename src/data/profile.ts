@@ -127,7 +127,7 @@ export const projects: Project[] = [
     title: "ZionRaah",
     category: "website",
     description:
-      "A tutoring-center website and management system: session logging with automatic payroll splits, teacher roster and payouts, teacher availability, and a public booking page where parents reserve a slot by QR code — no account needed.",
+      "A website and management system for Zion-Raah Reading and Tutorial Services: session logging with automatic payroll splits, teacher roster and payouts, teacher availability, and a public booking page where parents reserve a slot by QR code — no account needed.",
     tags: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     link: { label: "Live Site", href: "https://zion-raah-rho.vercel.app/" },
     cover: { icon: "book", gradient: "from-[#78350f] via-[#b45309] to-[#f59e0b]" },

@@ -38,6 +38,21 @@ export const about = {
   ],
 };
 
+// Tech stack grouped by area (Skills section).
+export const techStack: { group: string; items: string[] }[] = [
+  {
+    group: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "CSS/SASS", "Inertia.js", "Responsive design", "Figma"],
+  },
+  { group: "Backend", items: ["Node.js / Express", "Laravel / PHP", "Python", "REST APIs", "Supabase"] },
+  { group: "Data", items: ["PostgreSQL", "SQLite"] },
+  { group: "Desktop & AI", items: ["PySide6 (Qt)", "PyInstaller", "Gemini API", "Whisper"] },
+  {
+    group: "Ship & collaborate",
+    items: ["Git & GitHub", "Pull-request workflow", "Vercel", "Render", "Railway", "Cloudflare Workers"],
+  },
+];
+
 // Skill-level bars (Skills section). Edit the numbers (0–100) to taste.
 // Class strings must stay literal so Tailwind can see them.
 export const skillLevels: { label: string; value: number; color: { indicator: string; track: string } }[] = [

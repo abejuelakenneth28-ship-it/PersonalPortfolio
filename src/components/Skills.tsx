@@ -1,6 +1,7 @@
 import SkillsProgress from "./ui/progress-03";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
+import { TechStack } from "./TechStack";
 
 export function Skills() {
   return (
@@ -13,6 +14,9 @@ export function Skills() {
         />
         <Reveal>
           <SkillsProgress />
+        </Reveal>
+        <Reveal delay={0.1} className="mt-5">
+          <TechStack />
         </Reveal>
       </div>
     </section>

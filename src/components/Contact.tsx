@@ -8,7 +8,7 @@ import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
 
 // Web3Forms access keys are designed to be public (they only allow sending to your inbox).
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "5f3fc6e9-73b9-4ec2-9766-af112428453b";
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "446f34d4-f1bc-4749-aa8c-d750e4832919";
 
 type Status = { kind: "idle" | "sending" | "success" | "error"; message?: string };
 

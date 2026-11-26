@@ -32,7 +32,7 @@ export const about = {
     "When I'm not designing or coding, you'll find me serving in my church — mentoring disciples, teaching God's word, and guiding new musicians in their journey.",
   ],
   stats: [
-    { value: 2, label: "Years Experience" },
+    { value: 4, label: "Years Experience" },
     { value: 7, label: "Projects Completed" },
     { value: 4, label: "Happy Clients" },
   ],

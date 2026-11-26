@@ -42,6 +42,22 @@ export function Nav() {
       className="fixed top-4 left-1/2 z-50 -translate-x-1/2 sm:top-6"
     >
       <div className="flex items-center gap-0.5 rounded-2xl border border-line bg-card p-1.5 shadow-[0_4px_30px_var(--shadow)] backdrop-blur-xl sm:gap-1 sm:p-2">
+        <a
+          href="#home"
+          onClick={() => setActive("home")}
+          aria-label="Kenneth Abejuela — back to top"
+          className="flex shrink-0 items-center rounded-full px-1 transition-transform duration-300 hover:scale-110"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt=""
+            width={32}
+            height={32}
+            className="h-7 w-7 rounded-full drop-shadow-[0_0_8px_rgb(220_38_38/0.5)] sm:h-8 sm:w-8"
+          />
+        </a>
+        <span aria-hidden="true" className="mx-0.5 h-5 w-px bg-line" />
         {sections.map((s, i) => {
           const Icon = icons[s.id];
           const isActive = active === s.id;

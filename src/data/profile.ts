@@ -38,39 +38,6 @@ export const about = {
   ],
 };
 
-export type SkillIcon = "code" | "palette" | "rocket" | "star";
-
-export const skills: { icon: SkillIcon; title: string; description: string; tags: string[] }[] = [
-  {
-    icon: "code",
-    title: "Frontend Development & Web Design",
-    description:
-      "Creating responsive, interactive user interfaces and beautiful web designs with modern frameworks and creative tools.",
-    tags: ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    icon: "palette",
-    title: "UI/UX Design",
-    description:
-      "Designing intuitive interfaces that delight users and drive engagement through thoughtful user experience.",
-    tags: ["Figma", "Adobe XD", "Book Design", "Prototyping", "Design Systems"],
-  },
-  {
-    icon: "rocket",
-    title: "DevOps & Tools",
-    description:
-      "Streamlining deployment pipelines and maintaining efficient development workflows for scalable projects.",
-    tags: ["Docker", "AWS", "CI/CD", "Git"],
-  },
-  {
-    icon: "star",
-    title: "Leadership & Mentoring",
-    description:
-      "Guiding teams and disciples through mentoring in church, teaching God's way, and helping new musicians grow.",
-    tags: ["Team Management", "Communication", "Problem Solving", "Mentoring"],
-  },
-];
-
 // Skill-level bars (Skills section). Edit the numbers (0–100) to taste.
 // Class strings must stay literal so Tailwind can see them.
 export const skillLevels: { label: string; value: number; color: { indicator: string; track: string } }[] = [

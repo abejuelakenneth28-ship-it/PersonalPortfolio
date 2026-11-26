@@ -30,25 +30,25 @@ export function Contact() {
     const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
     setStatus({ kind: "sending" });
 
-    // Send to both channels; the message counts as delivered if either succeeds.
-    const [web3, telegram] = await Promise.allSettled([
-      WEB3FORMS_KEY
-        ? fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({ access_key: WEB3FORMS_KEY, ...data }),
-          }).then((r) => r.json() as Promise<{ success?: boolean }>)
-        : Promise.reject(new Error("Web3Forms not configured")),
-      fetch("/api/contact", {
+    // Web3Forms emails the message to the inbox tied to this access key.
+    let ok = false;
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }).then((r) => r.ok),
-    ]);
-
-    const ok =
-      (web3.status === "fulfilled" && web3.value.success === true) ||
-      (telegram.status === "fulfilled" && telegram.value === true);
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          ...data,
+          subject: `Portfolio: ${data.subject}`,
+          from_name: "Kenneth Abejuela Portfolio",
+          replyto: data.email,
+        }),
+      });
+      const json = (await res.json()) as { success?: boolean };
+      ok = json.success === true;
+    } catch {
+      ok = false;
+    }
 
     if (ok) {
       form.reset();

@@ -58,7 +58,8 @@ export function Nav() {
           />
         </a>
         <span aria-hidden="true" className="mx-0.5 h-5 w-px bg-line" />
-        {sections.map((s, i) => {
+        {/* "home" is still observed for scroll-spy, but the logo is its button. */}
+        {sections.filter((s) => s.id !== "home").map((s, i) => {
           const Icon = icons[s.id];
           const isActive = active === s.id;
           return (

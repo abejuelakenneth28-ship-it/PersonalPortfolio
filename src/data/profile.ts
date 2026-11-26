@@ -185,15 +185,6 @@ export const projects: Project[] = [
     link: { label: "Live Site", href: "https://zion-raah-rho.vercel.app/" },
     cover: { icon: "book", gradient: "from-[#78350f] via-[#b45309] to-[#f59e0b]" },
   },
-  {
-    title: "FreshMart POS",
-    category: "website",
-    description:
-      "A full-featured grocery store POS system. Features login authentication, real-time point-of-sale with cart, product management, inventory tracking, sales history with filtering, analytics dashboard, dark mode, live clock, search, and CSV export.",
-    tags: ["JavaScript", "POS System", "Inventory", "Dark Mode"],
-    link: { label: "Live Demo", href: "https://fresh-mart-pos-six.vercel.app/" },
-    cover: { icon: "cart", gradient: "from-[#0c4a6e] via-[#1e40af] to-[#3b82f6]" },
-  },
 
   // ── Apps ──────────────────────────────────────────────────
   {

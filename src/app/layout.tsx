@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Kenneth Abejuela — Portfolio",
   description:
-    "Frontend Developer & UI/UX Designer from Davao City crafting beautiful, interactive web experiences.",
+    "Full Stack Developer & UI/UX Designer from Davao City crafting beautiful, interactive web experiences.",
   openGraph: {
     title: "Kenneth Abejuela — Portfolio",
-    description: "Frontend Developer & UI/UX Designer from Davao City.",
+    description: "Full Stack Developer & UI/UX Designer from Davao City.",
     images: ["https://i.imgur.com/4DIYrrg.jpeg"],
   },
 };

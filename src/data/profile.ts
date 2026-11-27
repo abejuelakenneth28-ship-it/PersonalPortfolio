@@ -5,9 +5,9 @@ export const profile = {
   age: 21,
   badge: "Available for freelance work",
   tagline:
-    "Frontend Developer & UI/UX Designer crafting beautiful, interactive web experiences with modern technologies. Passionate about design, leadership, and creating products that make a difference.",
+    "Full Stack Developer & UI/UX Designer crafting beautiful, interactive web experiences with modern technologies. Passionate about design, leadership, and creating products that make a difference.",
   photo: "https://i.imgur.com/4DIYrrg.jpeg",
-  modalRole: "Frontend Developer & Graphic Designer",
+  modalRole: "Full Stack Developer & Graphic Designer",
   modalBio:
     "I craft visually stunning web designs and book layouts. With a passion for clean code, bold design, and servant leadership, I bring ideas to life through modern technologies while serving in my church through mentoring and music ministry.",
   email: "abejuelakenneth28@gmail.com",
@@ -26,9 +26,9 @@ export const socials: { key: SocialKey; label: string; href: string }[] = [
 ];
 
 export const about = {
-  heading: "Frontend Developer, Designer & Servant Leader",
+  heading: "Full Stack Developer, Designer & Servant Leader",
   paragraphs: [
-    "I'm a passionate frontend developer and web designer with a heart for leadership. During the pandemic, I spent 2 years doing book design work. I also serve in my church through mentoring and teaching disciples about God's way, and I guide new musicians by playing musical instruments.",
+    "I'm a passionate full stack developer and web designer with a heart for leadership. During the pandemic, I spent 2 years doing book design work. I also serve in my church through mentoring and teaching disciples about God's way, and I guide new musicians by playing musical instruments.",
     "When I'm not designing or coding, you'll find me serving in my church — mentoring disciples, teaching God's word, and guiding new musicians in their journey.",
   ],
   stats: [
